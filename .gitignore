@@ -1,0 +1,7 @@
+# Generated Files
+static/*
+!static/.git_keep
+
+# Python Environment
+.venv/
+__pycache__/
