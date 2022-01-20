@@ -28,7 +28,7 @@ def home():
 	        f"    <h3>Temperature: {temperature} &deg;F</h3>"
 	        f"    <h3>Relative Humidity: {relative_humidity}%</h3>"
 	        f"    <script type=\"text/javascript\">"
-	        f"    setInterval(() => location.reload(), 15000);"
+	        f"      setInterval(() => location.reload(), 15000);"
 	        f"    </script>"
 	        f"  </body>"
 	        f"</html>")

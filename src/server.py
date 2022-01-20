@@ -41,7 +41,7 @@ class Dht11:
 		start = max(1, len(transitions) - 81)
 		for i in range(start + 1, len(transitions), 2):
 			delta = transitions[i] - transitions[i - 1]
-			data.append(GPIO.LOW if 1000000 * delta < 51 else GPIO.HIGH)
+			data.append(GPIO.LOW if delta < 0.000051 else GPIO.HIGH)
 
 		bytes = []
 		for i in range(0, 40, 8):
@@ -52,7 +52,7 @@ class Dht11:
 			check += bytes[i]
 
 		if check & 0xFF != bytes[4]:
-			raise Exception("Mismatched checksum")
+			raise Exception("Mismatched integrity checksum")
 
 		self.temperature_c = bytes[2] + bytes[3] / 256
 		self.temperature_f = (9 / 5) * self.temperature_c + 32
